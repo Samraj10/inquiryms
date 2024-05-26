@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <style>
+        /* CSS styles for layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header, .footer {
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .content {
+            max-width: 800px; /* Adjust the maximum width as needed */
+            margin: 20px;
+        }
+        .image-container {
+            max-width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        /* Animation */
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        .blinking-text {
+            color: red; /* Text color set to red */
+            animation: moveLeft 10s infinite alternate; /* Apply animation to move left infinitely */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Welcomre to Jawan-Kisan-Power Dharashiv</h1> <!-- Change this to your actual header content -->
+    </div>
+    
+    <!-- Content Container -->
+    <div class="container">
+        <!-- Image and Title -->
+        <div class="content">
+            <div class="image-container">
+                <img src="/images/jawan-kisan.jpg" alt="Power Tiller">
+                <h2 class="blinking-text">Power Tiller Name</h2> <!-- Add your power tiller name here -->
+            </div>
+            
+            <!-- Form -->
+            <div class="form-container">
+                <h2>Send Inquiry</h2>
+                <form th:action="@{/submitForm}" th:object="${user}" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" th:field="*{name}" /><br/><br/>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" th:field="*{email}" /><br/><br/>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <p>Please contact by sending above inquiry form</p> <!-- Change this to your actual footer content -->
+    </div>
+</body>
+</html>
