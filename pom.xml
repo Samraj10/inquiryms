@@ -64,7 +64,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>urotaxi</finalName>
+		<finalName>mf</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
