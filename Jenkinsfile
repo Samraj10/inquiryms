@@ -40,15 +40,15 @@ pipeline{
                         def remoteUser='samra'
                         def remoteHost='192.168.59.111'
                         def remotePath='/home/samra/work'
-                       // def privateKey=''
+                        def privateKey='C:/Users/samra/.ssh/id_rsa'
 
                         bat """
 
-                            scp -i C:\\Users\\samra.ssh\\id_rsa ${warFile} ${remoteUser}@${remoteHost}:${remotePath}
+                            scp -i ${privateKey} ${warFile} ${remoteUser}@${remoteHost}:${remotePath}
                         """
                         bat """
 
-                            ssh -i C:\\Users\\samra.ssh\\id_rsa ${remoteUser}@${remoteHost}
+                            ssh -i ${privateKey} ${remoteUser}@${remoteHost}
                         """
 
                     }
