@@ -40,7 +40,7 @@ pipeline{
                         def remoteUser='samra'
                         def remoteHost='192.168.59.111'
                         def remotePath='/home/samra/work'
-                        def privateKey='C:/Users/samra/.ssh/samra'
+                        def privateKey='/home/samra/.ssh/samra'
 
                         bat """
 
