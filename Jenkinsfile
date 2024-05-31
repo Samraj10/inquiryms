@@ -42,14 +42,14 @@ pipeline{
                         def remotePath='/home/samra/work'
                         def privateKey='/home/samra/.ssh/samra'
 
-                        bat """
+                       
 
-                            scp -i ${privateKey} ${warFile} ${remoteUser}@${remoteHost}:${remotePath}
-                        """
-                        bat """
+                          sh scp -i ${privateKey} ${warFile} ${remoteUser}@${remoteHost}:${remotePath}
+                      
+                        
 
-                            ssh -i ${privateKey} ${remoteUser}@${remoteHost}
-                        """
+                          sh ssh -i ${privateKey} ${remoteUser}@${remoteHost}
+                   
 
                     }
 
