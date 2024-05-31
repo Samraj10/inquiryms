@@ -31,8 +31,6 @@ pipeline{
 
             }
 
-            /*
-
             stage('deploy to ansible server'){
 
                 steps{
@@ -56,7 +54,11 @@ pipeline{
                     }
 
                 }
-            } */
+            }
+
+
+
+
 
         }   
 
