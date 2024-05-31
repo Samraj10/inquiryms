@@ -44,11 +44,11 @@ pipeline{
 
                        
 
-                          sh scp -i ${privateKey} ${warFile} ${remoteUser}@${remoteHost}:${remotePath}
+                          sh "scp -i ${privateKey} ${warFile} ${remoteUser}@${remoteHost}:${remotePath}"
                       
                         
 
-                          sh ssh -i ${privateKey} ${remoteUser}@${remoteHost}
+                          sh "ssh -i ${privateKey} ${remoteUser}@${remoteHost}"
                    
 
                     }
