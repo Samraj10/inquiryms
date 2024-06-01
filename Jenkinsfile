@@ -31,17 +31,7 @@ pipeline{
 
             }
 
-            stage('build Docker image') {
-            steps {
-                script {
-                    def dockerImage = 'mf-app'
-                    def dockerFilePath = '/Dockerfile'
-                    def dockerTag = 'latest'
-                    
-                    bat "docker build -t ${dockerImage}:${dockerTag} -f ${dockerFilePath} ."
-                }
-            }
-        } 
+            
 
     }   
 
