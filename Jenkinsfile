@@ -54,7 +54,7 @@ pipeline{
                         def dockerfilePath='D:/applications/mf/mf'
                         def dockerImageName='mf-app'
 
-                        bat 'docker build -t ${dockerImageName}:${dockerTag} -f ${dockerFilePath} '
+                        bat 'docker build -t ${dockerImageName}:${dockerTag} -f ${dockerFilePath}/${dockerFileName} ${dockerFilePath}'
                     }
                 }
             }           
