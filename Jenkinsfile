@@ -31,7 +31,7 @@ pipeline{
 
             }
 
-            stage{
+            stage ('check docker version') {
 
                 steps {
 
