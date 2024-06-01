@@ -53,8 +53,9 @@ pipeline{
                         def dockerTag='latest'
                         def dockerfilePath='D://applications//mf//mf'
                         def dockerImageName='mf_app'
-                        bat 'cd D:/applications/mf/mf'
-                        bat 'docker build -t mf_app:latest .'
+                       // bat 'cd D:/applications/mf/mf'
+                       // bat 'docker build -t mf_app:latest .'
+                       bat "docker build -t ${dockerImageName}:${dockerTag} ${dockerfilePath}"
                     }
                 }
             }           
