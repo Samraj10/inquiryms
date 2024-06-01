@@ -49,10 +49,10 @@ pipeline{
 
                     script {
 
-                        def dockerFileName='/Dockerfile'
+                        def dockerFileName='Dockerfile'
                         def dockerTag='latest'
                         def dockerfilePath='D:/applications/mf/mf'
-                        def dockerImageName='mf-app'
+                        def dockerImageName='mf_app'
 
                         bat 'docker build -t ${dockerImageName}:${dockerTag} -f ${dockerFilePath}/${dockerFileName} ${dockerFilePath}'
                     }
