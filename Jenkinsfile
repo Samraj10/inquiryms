@@ -51,7 +51,7 @@ pipeline{
 
                         def dockerFileName='Dockerfile'
                         def dockerTag='latest'
-                        def dockerfilePath='D:\\applications\\mf\\mf'
+                        def dockerfilePath='D://applications//mf//mf'
                         def dockerImageName='mf_app'
 
                         bat 'docker build -t mf_app:latest ${dockerFilePath}'
