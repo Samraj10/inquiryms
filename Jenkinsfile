@@ -41,6 +41,22 @@ pipeline{
                      }
                 }
 
+            }
+
+            stage {
+
+                steps {
+
+                    script {
+
+                        def dockerFileName='/Dockerfile'
+                        def dockerTag=
+                        def dockerfilePath='D:\applications\mf\mf'
+                        def dockerImageName='mf-app'
+                        
+                        bat 'docker build -t ${dockerImageName}:${dockerTag} -f ${dockerFilePath} '
+                    }
+                }
             }           
 
     }   
