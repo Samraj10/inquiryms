@@ -72,9 +72,9 @@ pipeline{
                     script {
 
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        bat "docker login -u samadhangapat -p %DOCKERHUB_PASSWORD%"
-                    }
-                        bat " docker push ${DOCKER_IMAGE_NAME} "
+                            bat "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                        }
+                            bat " docker push ${DOCKER_IMAGE_NAME} "
 
                     }
 
