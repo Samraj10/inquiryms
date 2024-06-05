@@ -88,10 +88,12 @@ pipeline{
 
                 steps {
 
-                    bat """
-                    ssh -i ~/.ssh/id_rsa samra@192.168.59.111
-                    """
-                    sh echo "hello ansible server..."
+                    script {
+                    sshagent(credentials: ['ansible_credentials']) {
+                        // SSH into the Ansible server and execute Ansible playbook
+                        sh "ssh samra@192.168.59.111 "
+                        sh echo "hello..."
+                    }
 
                 }
             }           
