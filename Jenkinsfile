@@ -91,7 +91,7 @@ pipeline{
                     bat """
                     ssh -i ~/.ssh/id_rsa samra@192.168.59.111
                     """
-                    sh 'pwd'
+                    sh echo "hello ansible server..."
 
                 }
             }           
