@@ -73,9 +73,9 @@ pipeline{
                     script {
 
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                            bat "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+                            bat "docker login -u ${env.DOCKER_USERNAME} -p ${env.DOCKER_PASSWORD}"
                         }
-                            bat " docker push ${DOCKER_IMAGE_NAME} "
+                            bat " docker push ${env.DOCKER_IMAGE_NAME} "
 
                     }
 
