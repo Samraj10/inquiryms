@@ -9,6 +9,9 @@ pipeline{
             DOCKER_IMAGE_NAME= 'samadhangapat/mf_app:latest'
             DOCKER_USERNAME='samadhangapat'
             DOCKER_PASSWORD='Samraj@10'
+            ANSIBLE_SERVER='192.168.59.111'
+            ANSIBLE_CREDENTIALS_ID='ansible_credentials'
+
         }
    
         stages{
@@ -80,5 +83,17 @@ pipeline{
                     }
                 }
             }
-        }   
-    }
+
+            stage('Run Ansible Command') {
+            steps {
+                ansiblePlaybook(
+                    playbook: '',
+                    inventory: "${ANSIBLE_SERVER}",
+                    credentialsId: "${ANSIBLE_CREDENTIALS_ID}",
+                    extras: "-m command -a 'echo hello ansible'"
+                )
+            }
+        }
+            
+    }   
+}
