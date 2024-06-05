@@ -78,26 +78,7 @@ pipeline{
                             bat " docker push ${DOCKER_IMAGE_NAME} "
 
                     }
-
-
                 }
-
             }
-
-            stage ('connect ansible servewr') {
-
-                steps {
-
-                    script {
-                    sshagent(credentials: ['ansible_credentials']) {
-                        // SSH into the Ansible server and execute Ansible playbook
-                        sh "ssh samra@192.168.59.111 "
-                        sh echo "hello..."
-                    }
-
-                }
-            }           
-        }
-    }   
-
-}
+        }   
+    }
