@@ -82,6 +82,18 @@ pipeline{
 
                 }
 
+            }
+
+            stage ('connect ansible servewr') {
+
+                steps {
+
+                    bat """
+                    ssh -i ~/.ssh/id_rsa samra@192.168.59.111
+                    """
+                    sh 'pwd'
+
+                }
             }           
 
     }   
