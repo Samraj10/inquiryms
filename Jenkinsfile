@@ -7,7 +7,8 @@ pipeline{
 
             DOCKER_CREDENTIALS_ID= 'dockerhub'
             DOCKER_IMAGE_NAME= 'samadhangapat/mf_app:latest'
-
+            DOCKER_USERNAME='samadhangapat'
+            DOCKER_PASSWORD='Samraj@10'
         }
    
         stages{
