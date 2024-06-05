@@ -5,7 +5,7 @@ pipeline{
     }
         environment {
 
-            DOCKER_CREDENTIALS_ID= ''
+            DOCKER_CREDENTIALS_ID= 'dockerhub'
             DOCKER_IMAGE_NAME= 'samadhangapat/mf_app:latest'
 
         }
@@ -71,8 +71,8 @@ pipeline{
                     
                     script {
 
-                        withCredentials([string(credentialsId: dockerhub, variable: 'DOCKERHUB_PASSWORD')]) {
-                        bat "docker login -u your-docker-username -p %DOCKERHUB_PASSWORD%"
+                        withCredentials([string(credentialsId: DOCKER_CREDENTIALS_ID, variable: 'DOCKERHUB_PASSWORD')]) {
+                        bat "docker login -u samadhangapat -p %DOCKERHUB_PASSWORD%"
                     }
                         bat " docker push ${DOCKER_IMAGE_NAME} "
 
