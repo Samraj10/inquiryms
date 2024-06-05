@@ -59,7 +59,7 @@ pipeline{
                         def dockerfilePath='D://applications//mf//mf'
                         def dockerImageName='mf_app'
                         bat 'cd D:/applications/mf/mf'
-                        bat 'docker build -t ${DOCKER_IMAGE_NAME} .'
+                        bat 'docker build -t samadhangapat/mf_app:latest .'
                       
                     }
                 }
