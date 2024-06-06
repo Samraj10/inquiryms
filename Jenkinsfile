@@ -94,7 +94,8 @@ pipeline{
                             powershell -Command \"
                             \$password = ConvertTo-SecureString '${SSH_PASS}' -AsPlainText -Force;
                             \$cred = New-Object System.Management.Automation.PSCredential ('${SSH_USER}', \$password);
-                            Invoke-Command -ComputerName ${ANSIBLE_VM_IP} -Credential \$cred -ScriptBlock {ansible-playbook /home/samra/ansible_work/windows_ping.yml} -Authentication Password
+                            \$scriptBlock = { ansible-playbook /home/${SSH_USER}/ansible_work/windows_ping.yml };
+                            Invoke-Command -ComputerName ${ANSIBLE_VM_IP} -Credential \$cred -ScriptBlock \$scriptBlock -Authentication Password
                             \"
                         """
                     }
