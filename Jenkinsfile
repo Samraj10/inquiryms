@@ -86,22 +86,13 @@ pipeline{
             }
 
             stage('Run Ansible Playbook') {
+            agent {
+                label 'ansible_server'
+            }
             steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: "${ANSIBLE_CREDENTIALS_ID}", usernameVariable: 'SSH_USER', passwordVariable: 'SSH_PASS')]) {
-                        // Using PowerShell to run the command on the remote server
-                        bat """
-                            powershell -Command \"
-                            \$password = ConvertTo-SecureString '${SSH_PASS}' -AsPlainText -Force;
-                            \$cred = New-Object System.Management.Automation.PSCredential ('${SSH_USER}', \$password);
-                            \$scriptBlock = { ansible-playbook /home/${SSH_USER}/ansible_work/windows_ping.yml };
-                            Invoke-Command -ComputerName ${ANSIBLE_VM_IP} -Credential \$cred -ScriptBlock \$scriptBlock -Authentication Password
-                            \"
-                        """
-                    }
-                }
+                sh 'ansible-playbook /home/samra/ansible_work/windows_ping.yml'
             }
         }
-            
-    }   
+    }
 }
+            
