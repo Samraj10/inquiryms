@@ -9,8 +9,9 @@ pipeline{
             DOCKER_IMAGE_NAME= 'samadhangapat/mf_app:latest'
             DOCKER_USERNAME='samadhangapat'
             DOCKER_PASSWORD='Samraj@10'
-            ANSIBLE_SERVER='192.168.59.111'
-            ANSIBLE_CREDENTIALS_ID='ansible_credentials'
+            ANSIBLE_VM_IP = '192.168.59.111'
+            ANSIBLE_USER = 'samra'
+            ANSIBLE_CREDENTIALS_ID = 'ansible_credentials'
 
         }
    
@@ -84,14 +85,16 @@ pipeline{
                 }
             }
 
-            stage('Run Ansible Command') {
+            stage('Run Ansible Playbook') {
             steps {
-                ansiblePlaybook(
-                    playbook: '',
-                    inventory: "${ANSIBLE_SERVER}",
-                    credentialsId: "${ANSIBLE_CREDENTIALS_ID}",
-                    extras: "-m command -a 'echo hello ansible'"
-                )
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${ANSIBLE_CREDENTIALS_ID}", usernameVariable: 'SSH_USER', passwordVariable: 'SSH_PASS')]) {
+                        bat """
+                            set ANSIBLE_HOST_KEY_CHECKING=False
+                            sshpass -p %SSH_PASS% ssh -o StrictHostKeyChecking=no %SSH_USER%@${ANSIBLE_VM_IP} "ansible-playbook windows_ping.yml"
+                        """
+                    }
+                }
             }
         }
             
