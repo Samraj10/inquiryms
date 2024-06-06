@@ -89,9 +89,13 @@ pipeline{
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: "${ANSIBLE_CREDENTIALS_ID}", usernameVariable: 'SSH_USER', passwordVariable: 'SSH_PASS')]) {
+                        // Using PowerShell to run the command on the remote server
                         bat """
-                            set ANSIBLE_HOST_KEY_CHECKING=False
-                            sshpass -p %SSH_PASS% ssh -o StrictHostKeyChecking=no %SSH_USER%@${ANSIBLE_VM_IP} "ansible-playbook windows_ping.yml"
+                            powershell -Command \"
+                            \$password = ConvertTo-SecureString '${SSH_PASS}' -AsPlainText -Force;
+                            \$cred = New-Object System.Management.Automation.PSCredential ('${SSH_USER}', \$password);
+                            Invoke-Command -ComputerName ${ANSIBLE_VM_IP} -Credential \$cred -ScriptBlock {ansible-playbook /home/samra/ansible_work/windows_ping.yml} -Authentication Password
+                            \"
                         """
                     }
                 }
