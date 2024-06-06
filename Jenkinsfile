@@ -86,11 +86,13 @@ pipeline{
             }
 */
             stage('Run Ansible Playbook') {
-            agent {
-                label 'ansible_server'
-            }
             steps {
-                sh 'ansible-playbook /home/samra/ansible_work/windows_ping.yml'
+                ansiblePlaybook(
+                    playbook: 'windows_ping.yml',
+                    inventory: "${ANSIBLE_VM_IP},",
+                    credentialsId: "${ANSIBLE_CREDENTIALS_ID}",
+                    extras: '-u ${ANSIBLE_USER} --ssh-common-args="-o StrictHostKeyChecking=no"'
+                )
             }
         }
     }
