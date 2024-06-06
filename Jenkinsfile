@@ -69,7 +69,7 @@ pipeline{
                     }
                 }
             }
-
+/*
             stage('push docker image'){
 
                 steps {
@@ -84,7 +84,7 @@ pipeline{
                     }
                 }
             }
-
+*/
             stage('Run Ansible Playbook') {
             agent {
                 label 'ansible_server'
