@@ -86,42 +86,26 @@ pipeline{
             }
 */
 
-            stage('Copy windows_ping.yml') {
-            steps {
-                // Copy windows_ping.yml from build context to remote server
-                sshPublisher(
-                    publishers: [
-                        sshPublisherDesc(
-                            configName: 'ansible_server',
-                            transfers: [
-                                sshTransfer(
-                                    sourceFiles: 'mf/windows_ping.yml',
-                                    remoteDirectory: '/home/samra/ansible_work',
-                                    removePrefix: '',
-                                    execTimeout: 120000,
-                                    usePty: true
-                                )
-                            ],
-                            verbose: true
-                        )
-                    ]
-                )
-            }
-        }
+            
         stage('SSH into Ansible Server and Run Playbook') {
             steps {
-                // Run Ansible playbook on the remote server
-                sshPublisher(
+                // Use the SSH Publisher plugin to run commands on the remote server
+                sshPublisher( 
                     publishers: [
                         sshPublisherDesc(
-                            configName: 'ansible_server',
+                            configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    execCommand: 'ansible-playbook /home/samra/ansible_work/copy.yml',
-                                    execTimeout: 120000,
-                                    usePty: true
+                                    execCommand: 'ansible-playbook /home/samra/ansible_work/mf_deploy.yml',  // Command to execute
+                                    remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)
+                                    sourceFiles: 'mf/mf_deploy.yml',  // Source files to transfer (optional)
+                                    removePrefix: '',  // Remove prefix from transferred files (optional)
+                                    execTimeout: 120000,  // Execution timeout in milliseconds (optional)
+                                    usePty: true  // Use Pseudo Terminal (optional)
                                 )
                             ],
+                            usePromotionTimestamp: false,
+                            useWorkspaceInPromotion: false,
                             verbose: true
                         )
                     ]
