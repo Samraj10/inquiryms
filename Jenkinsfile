@@ -91,9 +91,14 @@ pipeline{
 
                     script {
 
-                        ssh  samra@192.168.59.111
-
-                        sh 'ansible-playbook windows_ping.yml'
+                            sshagent(['ansible_credentials']) {
+                        // Execute the Ansible playbook on the remote server
+                        sh '''
+                            ssh -o StrictHostKeyChecking=no samra@192.168.59.111 << EOF
+                            ansible-playbook windows_ping.yml
+                            EOF
+                        '''
+                    }
 
                     }
                     
