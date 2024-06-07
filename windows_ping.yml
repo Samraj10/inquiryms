@@ -1,0 +1,9 @@
+---
+- name: windows ping
+  hosts: windows
+  tasks:
+    - name: ping to windows
+      win_ping:
+      become: yes
+      become_user: samra
+...
