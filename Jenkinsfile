@@ -97,7 +97,6 @@ pipeline{
                                 sshTransfer(
                                     sourceFiles: 'windows_ping.yml',
                                     remoteDirectory: '/home/samra/ansible_work',
-                                    removePrefix: '',
                                     execTimeout: 120000,
                                     usePty: true
                                 )
