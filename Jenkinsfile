@@ -85,16 +85,17 @@ pipeline{
                 }
             }
 */
-            stage('Run Ansible Playbook') {
-            steps {
-                ansiblePlaybook(
-                    playbook: 'windows_ping.yml',
-                    inventory: "${ANSIBLE_VM_IP},",
-                    credentialsId: "${ANSIBLE_CREDENTIALS_ID}",
-                    extras: '-u ${ANSIBLE_USER} --ssh-common-args="-o StrictHostKeyChecking=no"'
-                )
+            stage ('ssh into ansible server') {
+
+                steps {
+
+                    sh 'ansible-playbook windows_ping.yml'
+
+                }
+
             }
-        }
+
+
     }
 }
             
