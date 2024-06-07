@@ -89,8 +89,10 @@ pipeline{
 
                 steps {
 
-                    sh 'ansible-playbook windows_ping.yml'
+                    ssh  samra@${ANSIBLE_VM_IP}
 
+                    sh 'ansible-playbook windows_ping.yml'
+                    
                 }
 
             }
