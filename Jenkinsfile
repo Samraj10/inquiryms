@@ -95,8 +95,8 @@ pipeline{
                             configName: 'ansible_server',
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: 'windows_ping.yml',
-                                    remoteDirectory: '',
+                                    sourceFiles: 'win.yml',
+                                    remoteDirectory: '/',
                                     removePrefix: '',
                                     execTimeout: 120000,
                                     usePty: true
