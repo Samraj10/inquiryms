@@ -89,7 +89,7 @@ pipeline{
 
                 steps {
 
-                    ssh  ${ANSIBLE_USER}@${ANSIBLE_VM_IP}
+                    ssh  'samra@192.168.59.111'
 
                     sh 'ansible-playbook windows_ping.yml'
                     
