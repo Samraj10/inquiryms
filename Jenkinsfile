@@ -89,9 +89,14 @@ pipeline{
 
                 steps {
 
-                    ssh  samra@192.168.59.111
+                    script {
 
-                    sh 'ansible-playbook windows_ping.yml'
+                        ssh  samra@192.168.59.111
+
+                        sh 'ansible-playbook windows_ping.yml'
+
+                    }
+                    
                     
                 }
 
