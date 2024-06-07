@@ -94,8 +94,8 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    execCommand: 'ansible-playbook /home/samra/windows_ping.yml',  // Command to execute
-                                    remoteDirectory: '/home/samra',  // Remote directory (optional)
+                                    execCommand: 'ansible-playbook /home/samra/ansible_work/windows_ping.yml',  // Command to execute
+                                    remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)
                                     sourceFiles: 'windows_ping.yml',  // Source files to transfer (optional)
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
                                     execTimeout: 120000,  // Execution timeout in milliseconds (optional)
