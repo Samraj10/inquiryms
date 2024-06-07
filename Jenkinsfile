@@ -85,25 +85,43 @@ pipeline{
                 }
             }
 */
-            stage('SSH into Ansible Server and Run Playbook') {
+
+            stage('Copy windows_ping.yml') {
             steps {
-                // Use the SSH Publisher plugin to run commands on the remote server
+                // Copy windows_ping.yml from build context to remote server
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
-                            configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
+                            configName: 'ansible_server',
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: 'windows_ping.yml',  // Source files to transfer (optional)
-                                    remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)
-                                    execCommand: 'ansible-playbook /home/samra/ansible_work/windows_ping.yml',  // Command to execute
-                                    removePrefix: '',  // Remove prefix from transferred files (optional)
-                                    execTimeout: 120000,  // Execution timeout in milliseconds (optional)
-                                    usePty: true  // Use Pseudo Terminal (optional)
+                                    sourceFiles: 'windows_ping.yml',
+                                    remoteDirectory: '/home/samra/ansible_work',
+                                    removePrefix: '',
+                                    execTimeout: 120000,
+                                    usePty: true
                                 )
                             ],
-                            usePromotionTimestamp: false,
-                            useWorkspaceInPromotion: false,
+                            verbose: true
+                        )
+                    ]
+                )
+            }
+        }
+        stage('SSH into Ansible Server and Run Playbook') {
+            steps {
+                // Run Ansible playbook on the remote server
+                sshPublisher(
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: 'ansible_server',
+                            transfers: [
+                                sshTransfer(
+                                    execCommand: 'ansible-playbook /home/samra/ansible_work/windows_ping.yml',
+                                    execTimeout: 120000,
+                                    usePty: true
+                                )
+                            ],
                             verbose: true
                         )
                     ]
