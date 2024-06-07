@@ -96,8 +96,8 @@ pipeline{
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: 'windows_ping.yml',
-                                    remoteDirectory: '/home/samra/ansible_work',
-                                    removePrefix: '/home/samra/ansible_work',
+                                    remoteDirectory: '',
+                                    removePrefix: '',
                                     execTimeout: 120000,
                                     usePty: true
                                 )
@@ -117,7 +117,7 @@ pipeline{
                             configName: 'ansible_server',
                             transfers: [
                                 sshTransfer(
-                                    execCommand: 'ansible-playbook /home/samra/ansible_work/windows_ping.yml',
+                                    execCommand: 'ansible-playbook /home/samra/ansible_work/copy.yml',
                                     execTimeout: 120000,
                                     usePty: true
                                 )
