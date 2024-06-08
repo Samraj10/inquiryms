@@ -96,7 +96,7 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: 'mf/kubernetes/mf_deploy.yml',  // Source files to transfer (optional)
+                                    sourceFiles: '**/mf_deploy.yml',  // Source files to transfer (optional)
                                     execCommand: 'ansible-playbook /home/samra/ansible_work/mf_deploy.yml',  // Command to execute
                                     remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)                                   
                                     removePrefix: 'mf/kubernetes',  // Remove prefix from transferred files (optional)
