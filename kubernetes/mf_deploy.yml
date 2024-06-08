@@ -15,4 +15,10 @@
 
     - name: deploy application
       win_shell: kubectl apply -f {{ workdir }}/Deployment.yml 
+    
+    - name: create service 
+      include_tasks: Service.yml
+
+    - name: start minikube service 
+      win_shell: minikube service my-app
 ...
