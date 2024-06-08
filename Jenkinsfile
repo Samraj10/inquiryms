@@ -95,7 +95,7 @@ pipeline{
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: '**/mf_deploy.yml',  // Source files to transfer (optional)
-                                    execCommand: 'ansible-playbook /home/samra/ansible_work/mf_deploy.yml',  // Command to execute
+                                    execCommand: 'ansible-playbook /home/samra/ansible_work/kubernetes/mf_deploy.yml',  // Command to execute
                                   //  remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)                                   
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
                                     execTimeout: 120000,  // Execution timeout in milliseconds (optional)
