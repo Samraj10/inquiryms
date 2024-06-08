@@ -1,8 +1,0 @@
----
-- name: windows ping
-  hosts: windows
-  gather_facts: no
-  tasks:
-    - name: ping to windows
-      win_ping: 
-...
