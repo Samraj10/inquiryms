@@ -9,9 +9,7 @@ pipeline{
             DOCKER_IMAGE_NAME= 'samadhangapat/mf_app:latest'
             DOCKER_USERNAME='samadhangapat'
             DOCKER_PASSWORD='Samraj@10'
-            ANSIBLE_VM_IP = '192.168.59.111'
-            ANSIBLE_USER = 'samra'
-            ANSIBLE_CREDENTIALS_ID = 'ansible_credentials'
+           
 
         }
    
@@ -99,7 +97,7 @@ pipeline{
                                     sourceFiles: '**/mf_deploy.yml',  // Source files to transfer (optional)
                                     execCommand: 'ansible-playbook /home/samra/ansible_work/mf_deploy.yml',  // Command to execute
                                     remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)                                   
-                                    removePrefix: '',  // Remove prefix from transferred files (optional)
+                                    removePrefix: '**',  // Remove prefix from transferred files (optional)
                                     execTimeout: 120000,  // Execution timeout in milliseconds (optional)
                                     usePty: true  // Use Pseudo Terminal (optional)
                                 )
