@@ -13,11 +13,14 @@
       win_shell: minikube start --driver=virtualbox --no-vtx-check
       when: minikube_status.rc !=0
 
+    - name: deploy statefulset 
+      win_shell: kubectl apply -f {{ workdir }}/mysql_statefulset.yml
+
     - name: deploy application
       win_shell: kubectl apply -f {{ workdir }}/Deployment.yml 
     
     - name: create service 
-      include_tasks: Service.yml
+      win_shell: kubectl apply -f {{ workdir }}/Service.yml
 
     - name: start minikube service 
       win_shell: minikube service my-app
