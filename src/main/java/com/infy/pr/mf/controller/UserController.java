@@ -1,6 +1,7 @@
 package com.infy.pr.mf.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +27,17 @@ public class UserController {
     }
 
     @PostMapping("/submitForm")
-    public String submitForm(@ModelAttribute User user, Model model) {
+    public String submitForm(@ModelAttribute User user, Model model , @Value("${SECOND_MICROSERVICE_URL}") String secondMicroserviceUrl) {
         userService.saveUser(user);
         model.addAttribute("message", "User saved successfully in mf first microservice db ...");
-        String secondMicroserviceUrl="http://localhost:8082/api/susers";
+      //  String secondMicroserviceUrl="http://localhost:8082/api/susers";
         restTemplate.postForObject(secondMicroserviceUrl, user, User.class);
         
         
         return "results";
     }
+
+    
+    
 }
 
