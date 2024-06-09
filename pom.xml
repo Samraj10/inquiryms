@@ -15,7 +15,7 @@
 	<groupId>com.infy.pr</groupId>
 	<artifactId>mf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>mf</name>
 	<description>Agricultural Accessories Exibhition</description>
 	<properties>

@@ -1,10 +1,14 @@
-FROM tomcat:9.0-alpine
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:11-jdk-slim
 
-RUN rm -rf /usr/local/tomcat/webapps/*
+# Set the working directory inside the container
+WORKDIR /app
 
-COPY target/mf.war /usr/local/tomcat/webapps/ROOT.war
+# Copy the JAR file from the target directory to the working directory in the container
+COPY target/mf.jar /app/mf.jar
 
-EXPOSE 8080
+# Expose the port that the application runs on (update to 8081)
+EXPOSE 8081
 
-CMD ["catalina.sh", "run"]
-
+# Define the command to run the application
+CMD ["java", "-jar", "mf.jar"]
