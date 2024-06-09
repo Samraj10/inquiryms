@@ -3,24 +3,27 @@
   hosts: windows
   gather_facts: no
   vars:
-    workdir: D:\work\kubernetes_practice\power_tiller_app
+    workdir: D:\work\kubernetes_practice\power_tiller_app\first-mf
   tasks:
     - name: Ensure minikube is running
       win_shell: minikube status 
       register: minikube_status
     
-    - name: start minikube
-      win_shell: minikube start --driver=virtualbox --no-vtx-check
-      when: minikube_status.rc !=0
+    # - name: start minikube
+    #   win_shell: minikube start --driver=virtualbox --no-vtx-check
+    #   when: minikube_status.rc !=0
 
     - name: deploy statefulset 
-      win_shell: kubectl apply -f {{ workdir }}/mysql_statefulset.yml
+      win_shell: kubectl apply -f {{ workdir }}/mf-mysql_statefulset.yml
+
+    - name: start mysql service 
+      win_shell: kubectl apply -f {{ workdir }}/mf-mysql_service.yml
 
     - name: deploy application
-      win_shell: kubectl apply -f {{ workdir }}/Deployment.yml 
+      win_shell: kubectl apply -f {{ workdir }}/mf-Deployment.yml 
     
     - name: create service 
-      win_shell: kubectl apply -f {{ workdir }}/Service.yml
+      win_shell: kubectl apply -f {{ workdir }}/mf-Service.yml
 
     - name: start minikube service 
       win_shell: minikube service my-app
