@@ -1,10 +1,10 @@
-package com.infy.pr.mf.service;
+package com.infy.pr.inquiryms.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.infy.pr.mf.model.User;
-import com.infy.pr.mf.repo.UserRepository;
+import com.infy.pr.inquiryms.model.User;
+import com.infy.pr.inquiryms.repo.UserRepository;
 
 import java.util.List;
 

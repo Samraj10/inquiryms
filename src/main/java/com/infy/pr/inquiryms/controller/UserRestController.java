@@ -1,9 +1,10 @@
-package com.infy.pr.mf.controller;
+package com.infy.pr.inquiryms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.infy.pr.mf.model.User;
-import com.infy.pr.mf.service.UserService;
+
+import com.infy.pr.inquiryms.model.User;
+import com.infy.pr.inquiryms.service.UserService;
 
 import java.util.List;
 

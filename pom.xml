@@ -13,10 +13,10 @@
 	
 	
 	<groupId>com.infy.pr</groupId>
-	<artifactId>mf</artifactId>
+	<artifactId>inquiryms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>mf</name>
+	<name>inquiryms</name>
 	<description>Agricultural Accessories Exibhition</description>
 	<properties>
 		<java.version>11</java.version>
@@ -64,7 +64,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>mf</finalName>
+		<finalName>inquiryms</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

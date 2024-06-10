@@ -1,4 +1,4 @@
-package com.infy.pr.mf.model;
+package com.infy.pr.inquiryms.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
