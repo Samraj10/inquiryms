@@ -4,8 +4,7 @@
   gather_facts: no
   vars:
     workdir: D:\applications\inquiryms\k8s-ims
-    src_file: /home/samra/power-tiller-app/k8s-ims/deploy-script.yml
-    dest_file: D:\applications\inquiryms\k8s-ims\deploy-script.yml
+    
   tasks:
 
     # realtime check cluster is running       
@@ -30,10 +29,6 @@
     - name: create service 
       win_shell: kubectl apply -f {{ workdir }}/AppService.yml
    
-    - name: Copy file to destination
-      win_copy:
-        src: "{{ src_file }}"
-        dest: "{{ dest_file }}"
 
 
       ## this below part no need to mention it will throw error if we run like this
