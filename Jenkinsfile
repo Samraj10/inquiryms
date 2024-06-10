@@ -92,8 +92,8 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: 'inquiryms/k8s-ims/deploy-script.yml',  // Source files to transfer (optional)
-                                    remoteDirectory: 'power-tiller-app',  //                       
+                                    sourceFiles: '**/k8s-ims/deploy-script.yml',  // Source files to transfer (optional)
+                                    remoteDirectory: 'power-tiller-app/k8s-ims',  //                       
                                     execCommand: 'ansible-playbook /home/samra/power-tiller-app/k8s-ims/deploy-script.yml',  // Command to execute
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
                                     execTimeout: 120000,  // Execution timeout in milliseconds (optional)
