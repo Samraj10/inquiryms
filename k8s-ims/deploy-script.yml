@@ -1,30 +1,46 @@
 ---
-- name: windows ping
+- name: deploy inquiry microservice application
   hosts: windows
   gather_facts: no
   vars:
-    workdir: D:\work\kubernetes_practice\power_tiller_app\first-mf
+    workdir: D:\applications\inquiryms\k8s-ims
+    src_file: /home/samra/power-tiller-app/k8s-ims/deploy-script.yml
+    dest_file: D:\applications\inquiryms\k8s-ims\deploy-script.yml
   tasks:
-    - name: Ensure minikube is running
-      win_shell: minikube status 
-      register: minikube_status
-    
-    # - name: start minikube
-    #   win_shell: minikube start --driver=virtualbox --no-vtx-check
-    #   when: minikube_status.rc !=0
+
+    # realtime check cluster is running       
+    #- name: Ensure minikube is running
+    #  win_shell: minikube status 
+    #  register: minikube_status
+    #  ignore_errors: yes
+
+    #- name: start minikube
+    #  win_shell: minikube start
+    #  when: minikube_status.rc !=0
 
     - name: deploy statefulset 
-      win_shell: kubectl apply -f {{ workdir }}/mf-mysql_statefulset.yml
+      win_shell: kubectl apply -f {{ workdir }}/StatefulsetMysql.yml
 
     - name: start mysql service 
-      win_shell: kubectl apply -f {{ workdir }}/mf-mysql_service.yml
+      win_shell: kubectl apply -f {{ workdir }}/MysqlService.yml
 
     - name: deploy application
-      win_shell: kubectl apply -f {{ workdir }}/mf-Deployment.yml 
+      win_shell: kubectl apply -f {{ workdir }}/Deployment.yml 
     
     - name: create service 
-      win_shell: kubectl apply -f {{ workdir }}/mf-Service.yml
+      win_shell: kubectl apply -f {{ workdir }}/AppService.yml
+   
+    - name: Copy file to destination
+      win_copy:
+        src: "{{ src_file }}"
+        dest: "{{ dest_file }}"
 
-    - name: start minikube service 
-      win_shell: minikube service my-app
+
+      ## this below part no need to mention it will throw error if we run like this
+
+      # - name: start statefulset service
+      #   win_shell: minikube service mysql   
+
+      #  - name: start application loadbalancer service
+      #  win_shell: minikube service inquiry-app
 ...
