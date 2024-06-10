@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     private RestTemplate restTemplate;
     
-    @Value("${SECOND_MICROSERVICE_URL}")
+    @Value("${second.microservice.url}")
     private String secondMicroserviceUrl;
     
     @GetMapping("/form")
@@ -35,6 +35,7 @@ public class UserController {
         model.addAttribute("message", "User saved successfully in mf first microservice db ...");
       //  String secondMicroserviceUrl="http://localhost:8082/api/susers";
         restTemplate.postForObject(secondMicroserviceUrl, user, User.class);
+        System.out.println(secondMicroserviceUrl);
         
         
         return "results";
