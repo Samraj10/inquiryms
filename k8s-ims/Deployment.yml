@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: inquiry-app
-          image: samadhangapat/inquiryms:v3
+          image: samadhangapat/inquiryms:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
