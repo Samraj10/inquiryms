@@ -97,7 +97,7 @@ pipeline{
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: '**/k8s-ims/**',  // Source files to transfer (optional)
-                                  //  remoteDirectory: '/home/samra/ansible_work',  // already remote directory mentione in ansible server while adding server                                  
+                                    remoteDirectory: 'power-tiller-app',  //                       
                                     execCommand: 'ansible-playbook /home/samra/ansible_work/windows_ping.yml',  // Command to execute
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
                                     execTimeout: 120000,  // Execution timeout in milliseconds (optional)
