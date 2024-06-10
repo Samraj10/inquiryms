@@ -12,7 +12,7 @@ pipeline{
            
 
         }
-   
+/*   
         stages{
             stage('checkout'){
 
@@ -50,7 +50,7 @@ pipeline{
                 }
 
             }
-/*
+
             stage ('build docker image') {
 
                 steps {
@@ -94,7 +94,7 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: '**/k8s-ims',  // Source files to transfer (optional)
+                                    sourceFiles: 'inquiryms/k8s-ims/**',  // Source files to transfer (optional)
                                     remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)                                   
                                     execCommand: 'ansible-playbook /home/samra/ansible_work/windows_ping.yml',  // Command to execute
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
