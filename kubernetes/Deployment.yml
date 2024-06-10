@@ -2,12 +2,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mf-app
+  name: inquiry-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mf-app
+      app: inquiry-app
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,17 +15,17 @@ spec:
   template:
     metadata:
       labels:
-        app: mf-app
+        app: inquiry-app
     spec:
       containers:
-        - name: mf-app
-          image: samadhangapat/mf_app:v3
+        - name: inquiry-app
+          image: samadhangapat/inquiryms:v3
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
           env:
             - name: SECOND_MICROSERVICE_URL
-              value: http://mf-second-app:8082/api/susers
+              value: http://productdetails-app:8082/api/susers
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mysql://mysql:3306/mfdb
             - name: SPRING_DATASOURCE_USERNAME

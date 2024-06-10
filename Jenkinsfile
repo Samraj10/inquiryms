@@ -6,7 +6,7 @@ pipeline{
         environment {
 
             DOCKER_CREDENTIALS_ID= 'dockerhub'
-            DOCKER_IMAGE_NAME= 'samadhangapat/mf_app:latest'
+            DOCKER_IMAGE_NAME= 'samadhangapat/inquiryms:latest'
             DOCKER_USERNAME='samadhangapat'
             DOCKER_PASSWORD='Samraj@10'
            
@@ -18,7 +18,7 @@ pipeline{
 
                 steps {
 
-                    git url: 'https://github.com/Samraj10/mf.git', branch: 'master'
+                    git url: 'https://github.com/Samraj10/inquiryms.git', branch: 'master'
 
                 }
 
@@ -59,10 +59,10 @@ pipeline{
 
                         def dockerFileName='Dockerfile'
                         def dockerTag='latest'
-                        def dockerfilePath='D://applications//mf//mf'
-                        def dockerImageName='mf_app'
-                        bat 'cd D:/applications/mf/mf'
-                        bat 'docker build -t samadhangapat/mf_app:latest .'
+                        def dockerfilePath='D://applications//inquiryms'
+                        def dockerImageName='inquiryms'
+                        bat 'cd D:/applications/inquiryms'
+                        bat 'docker build -t samadhangapat/inquiryms:latest .'
                       
                     }
                 }
@@ -94,8 +94,8 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: '**/mf_deploy.yml',  // Source files to transfer (optional)
-                                    execCommand: 'ansible-playbook /home/samra/ansible_work/kubernetes/mf_deploy.yml',  // Command to execute
+                                    sourceFiles: '**/deploy-script.yml',  // Source files to transfer (optional)
+                                    execCommand: 'ansible-playbook /home/samra/ansible_work/kubernetes/deploy-script.yml',  // Command to execute
                                   //  remoteDirectory: '/home/samra/ansible_work',  // Remote directory (optional)                                   
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
                                     execTimeout: 120000,  // Execution timeout in milliseconds (optional)
