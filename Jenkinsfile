@@ -58,18 +58,14 @@ pipeline{
                 steps {
 
                     script {
-
-                        def dockerFileName='Dockerfile'
-                        def dockerTag='latest'
-                        def dockerfilePath='D://applications//inquiryms'
-                        def dockerImageName='inquiryms'
+                        
                         bat 'cd D:/applications/inquiryms'
                         bat 'docker build -t samadhangapat/inquiryms:latest .'
                       
                     }
                 }
             }
-/*
+
             stage('push docker image'){
 
                 steps {
@@ -86,7 +82,7 @@ pipeline{
             }
 
 
-            
+ /*           
         stage('SSH into Ansible Server and Run Playbook') {
             steps {
                 // Use the SSH Publisher plugin to run commands on the remote server
