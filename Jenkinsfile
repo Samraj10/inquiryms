@@ -15,7 +15,7 @@ pipeline{
   
         stages{
 
-
+/*
             stage('checkout'){
 
                 steps {
@@ -82,7 +82,7 @@ pipeline{
             }
 
 
- /*           
+*/            
         stage('SSH into Ansible Server and Run Playbook') {
             steps {
                 // Use the SSH Publisher plugin to run commands on the remote server
@@ -108,7 +108,7 @@ pipeline{
                 )
             }
         }
-*/
+
 
     }
 }
