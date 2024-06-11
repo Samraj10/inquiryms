@@ -79,7 +79,7 @@ pipeline{
             }
 
 
-            stage {
+            stage ('push docker image') {
 
                 steps {
 
