@@ -79,19 +79,16 @@ pipeline{
             }
 
 
-            stage ('push docker image') {
-
-                steps {
-
-                    script {
-
-                        docker.withDockerRegistry('https://index.docker.io/v1/' , 'dockerhub'){
-                            docker.image('samadhangapat/inquiryms').push('latest')
-                        }
-                        
+            stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                        docker.image('samadhangapat/inquiryms:latest').push()
                     }
                 }
             }
+        }
+    
 
 /*
 
