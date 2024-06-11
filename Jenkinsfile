@@ -15,7 +15,7 @@ pipeline{
   
         stages{
 
-
+/*
             stage('checkout'){
 
                 steps {
@@ -65,6 +65,7 @@ pipeline{
                     }
                 }
             }
+*/
 
             stage('push docker image'){
 
@@ -81,7 +82,7 @@ pipeline{
                 }
             }
 
-
+/*
             
         stage('SSH into Ansible Server and Run Playbook') {
             steps {
@@ -92,7 +93,8 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: '**/k8s-ims/deploy-script.yml',  // Source files to transfer (optional)
+                                    sourceFiles: '**
+                                    /k8s-ims/deploy-script.yml',  // Source files to transfer (optional)
                                     remoteDirectory: '/power-tiller-app',  //                       
                                     execCommand: 'ansible-playbook /home/samra/power-tiller-app/k8s-ims/deploy-script.yml',  // Command to execute
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
@@ -108,7 +110,7 @@ pipeline{
                 )
             }
         }
-
+*/
 
     }
 }
