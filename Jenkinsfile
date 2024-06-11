@@ -73,7 +73,7 @@ pipeline{
 
                     script {
 
-                        docker.build('samadhangapat/inquiryms:latest')
+                        docker.build('${DOCKER_IMAGE_NAME}')
                     }
                 }
             }
