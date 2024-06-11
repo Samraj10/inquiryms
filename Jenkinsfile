@@ -42,7 +42,7 @@ pipeline{
                 }
 
             }
-
+*/
             stage ('check docker version') {
 
                 steps {
@@ -54,15 +54,18 @@ pipeline{
                 }
 
             }
-*/
-            stage('Build Docker Image') {
-            steps {
-                // Build Docker image
-                script {
-                    docker.build('samadhangapat/inquiryms:latest')
+
+            stage ('build docker image') {
+
+                steps {
+
+                    script {
+
+                        bat 'cd D:/applications/inquiryms'
+                        bat 'docker build -t samadhangapat/inquiryms:latest .'
+                    }
                 }
             }
-        }
 
 /*
 
