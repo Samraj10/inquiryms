@@ -54,21 +54,17 @@ pipeline{
                 }
 
             }
-
-            stage ('build docker image') {
-
-                steps {
-
-                    script {
-                        
-                        bat 'cd D:/applications/inquiryms'
-                        bat 'docker build -t samadhangapat/inquiryms:latest .'
-                      
-                    }
+*/
+            stage('Build Docker Image') {
+            steps {
+                // Build Docker image
+                script {
+                    docker.build('samadhangapat/inquiryms:latest')
                 }
             }
-*/
+        }
 
+/*
 
             stage('Push Docker Image') {
             steps {
@@ -83,7 +79,7 @@ pipeline{
             }
         }
 
-/*
+
             
         stage('SSH into Ansible Server and Run Playbook') {
             steps {
