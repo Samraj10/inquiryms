@@ -80,33 +80,16 @@ pipeline{
 
 
             stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
-                        docker.image('samadhangapat/inquiryms:latest').push()
+                steps {
+                    script {
+                        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                            docker.image('samadhangapat/inquiryms:latest').push()
+                        }
                     }
                 }
             }
-        }
-    
 
 
-
-            stage('Push Docker Image') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhubcreds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                        bat """
-                        echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
-                        """
-                    }
-                    bat "docker push ${DOCKER_IMAGE_NAME}"
-                }
-            }
-        }
-
-
-            
         stage('SSH into Ansible Server and Run Playbook') {
             steps {
                 // Use the SSH Publisher plugin to run commands on the remote server
@@ -116,8 +99,7 @@ pipeline{
                             configName: 'ansible_server',  // Name of the SSH server configured in Jenkins
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: '**
-                                    /k8s-ims/deploy-script.yml',  // Source files to transfer (optional)
+                                    sourceFiles: '**/k8s-ims/deploy-script.yml',  // Source files to transfer (optional)
                                     remoteDirectory: '/power-tiller-app',  //                       
                                     execCommand: 'ansible-playbook /home/samra/power-tiller-app/k8s-ims/deploy-script.yml',  // Command to execute
                                     removePrefix: '',  // Remove prefix from transferred files (optional)
