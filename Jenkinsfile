@@ -69,13 +69,7 @@ pipeline{
             }
 */
 
-            stage('Setup Docker') {
-            steps {
-                script {
-                    // Ensure Docker daemon is running
-                    bat "net start com.docker.service || exit 0"
-                }
-            }
+  
         }
 
             stage('Push Docker Image') {
