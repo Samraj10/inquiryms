@@ -25,7 +25,7 @@ pipeline{
                 }
 
             }
-/*
+
 
             stage('build'){
 
@@ -42,7 +42,7 @@ pipeline{
                 }
 
             }
-*/
+
             stage ('check docker version') {
 
                 steps {
