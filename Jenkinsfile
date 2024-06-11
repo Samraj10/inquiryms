@@ -15,7 +15,7 @@ pipeline{
   
         stages{
 
-/*
+
             stage('checkout'){
 
                 steps {
@@ -25,6 +25,8 @@ pipeline{
                 }
 
             }
+/*
+
             stage('build'){
 
                 steps {
