@@ -26,7 +26,7 @@ pipeline{
 
             }
 
-
+/*
             stage('build'){
 
                 steps {
@@ -54,7 +54,7 @@ pipeline{
                 }
 
             }
-/*
+
             stage ('build docker image') {
 
                 steps {
