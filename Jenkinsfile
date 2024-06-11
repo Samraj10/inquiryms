@@ -78,6 +78,19 @@ pipeline{
                 }
             }
 
+
+            stage {
+
+                steps {
+
+                    script {
+
+                        docker.withDockerRegistry('https://hub.docker.com/repository/docker/samadhangapat' , 'dockerhub')
+                        docker.image('samadhangapat/inquiryms').push('latest')
+                    }
+                }
+            }
+
 /*
 
             stage('Push Docker Image') {
