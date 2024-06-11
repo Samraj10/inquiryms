@@ -54,7 +54,7 @@ pipeline{
                 }
 
             }
-
+/*
             stage ('build docker image') {
 
                 steps {
@@ -63,6 +63,17 @@ pipeline{
 
                         bat 'cd D:/applications/inquiryms'
                         bat 'docker build -t samadhangapat/inquiryms:latest .'
+                    }
+                }
+            }
+*/
+            stage ('build docker image') {
+
+                steps {
+
+                    script {
+
+                        docker.build('samadhangapat/inquiryms:latest')
                     }
                 }
             }
