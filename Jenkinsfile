@@ -85,8 +85,10 @@ pipeline{
 
                     script {
 
-                        docker.withDockerRegistry('https://index.docker.io/v1/' , 'dockerhub')
-                        docker.image('samadhangapat/inquiryms').push('latest')
+                        docker.withDockerRegistry('https://index.docker.io/v1/' , 'dockerhub'){
+                            docker.image('samadhangapat/inquiryms').push('latest')
+                        }
+                        
                     }
                 }
             }
