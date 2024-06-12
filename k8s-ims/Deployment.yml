@@ -8,9 +8,7 @@ spec:
   selector:
     matchLabels:
       app: inquiry-app
-  strategy:
-    type: recreate
-      
+
   template:
     metadata:
       labels:
