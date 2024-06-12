@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping("/submitForm")
     public String submitForm(@ModelAttribute User user, Model model ) {
         userService.saveUser(user);
-        model.addAttribute("message", "User saved successfully in inquiry application ...");
+        model.addAttribute("message", "Enquiry submitted successfully ...");
       //  String secondMicroserviceUrl="http://localhost:8082/api/susers";
         restTemplate.postForObject(secondMicroserviceUrl, user, User.class);
         System.out.println(secondMicroserviceUrl);
