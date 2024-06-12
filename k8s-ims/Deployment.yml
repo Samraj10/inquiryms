@@ -9,20 +9,21 @@ spec:
     matchLabels:
       app: inquiry-app
   strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+    type: recreate
+      
   template:
     metadata:
       labels:
         app: inquiry-app
+      annotations:
+        date: Date
     spec:
       containers:
         - name: inquiry-app
           image: samadhangapat/inquiryms:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 8081
+          imagePullPolicy: Always
           env:
             - name: SECOND_MICROSERVICE_URL
               value: http://productdetails-app:8082/api/susers
@@ -32,7 +33,7 @@ spec:
               value: root 
             - name: SPRING_DATASOURCE_PASSWORD
               value: root
-
+      
       restartPolicy: Always
 
 ...

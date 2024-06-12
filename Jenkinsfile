@@ -10,7 +10,7 @@ pipeline{
            // DOCKER_USERNAME='samadhangapat'
            // DOCKER_PASSWORD='Samraj@10'
            
-
+            DATE = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone('UTC'))
         }
   
         stages {
