@@ -19,6 +19,8 @@ pipeline{
 
                 steps {
 
+                    deleteDir()
+
                     git url: 'https://github.com/Samraj10/inquiryms.git', branch: 'master'
 
                 }
@@ -53,7 +55,7 @@ pipeline{
                 }
 
             }
-            
+
 /*
             stage ('build docker image') {
 
