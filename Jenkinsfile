@@ -28,14 +28,14 @@ pipeline{
             }
 
 
-            stage('build'){
+            stage ('build'){
 
                 steps {
 
                     bat 'mvn clean package'
                 }
             }
-            stage('test'){
+            stage ('test'){
 
                 steps {
 
