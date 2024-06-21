@@ -10,6 +10,8 @@ public class InquiryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(InquiryApplication.class, args);
+		
+		
 	}
 
 	@Bean
@@ -17,4 +19,7 @@ public class InquiryApplication {
 		
 		return new RestTemplate();
 	}
+	
+	
+	
 }

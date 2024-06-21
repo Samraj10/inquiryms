@@ -13,8 +13,8 @@ spec:
     metadata:
       labels:
         app: inquiry-app
-      # annotations:
-      #   date: Date
+      annotations:
+        date: Date
     spec:
       containers:
         - name: inquiry-app

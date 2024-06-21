@@ -1,0 +1,4 @@
+---
+# vars file for deploy_inquiry_app_role
+
+workdir: D:\applications\inquiryms\ansible

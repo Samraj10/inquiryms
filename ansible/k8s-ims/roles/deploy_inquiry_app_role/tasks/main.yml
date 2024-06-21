@@ -1,0 +1,17 @@
+---
+# tasks file for deploy_inquiry_app_role
+
+    - name: deploy statefulset 
+      win_shell: kubectl apply -f {{ workdir }}/StatefulsetMysql.yml
+
+    - name: start mysql service 
+      win_shell: kubectl apply -f {{ workdir }}/MysqlService.yml
+
+    - name: deploy application
+      win_shell: kubectl apply -f {{ workdir }}/Deployment.yml 
+    
+    - name: create service 
+      win_shell: kubectl apply -f {{ workdir }}/AppService.yml
+
+
+...

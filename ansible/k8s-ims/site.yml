@@ -1,0 +1,10 @@
+---
+- name: deploy inquiry microservice application
+  hosts: windows
+  gather_facts: no
+  roles:
+    - deploy_inquiry_app_role
+
+
+...
+
