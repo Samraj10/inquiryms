@@ -7,7 +7,7 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'dockerhub' // Define Docker credentials ID
         DOCKER_IMAGE_NAME = 'samadhangapat/inquiryms:latest' // Define Docker image name
     }
-  
+  /*
     stages {
         stage ('checkout') {
             steps {
@@ -38,7 +38,7 @@ pipeline {
         }
 
         // Uncomment and configure Docker build and push stages if needed
-        /*
+       
         stage ('build docker image') {
             steps {
                 script {
