@@ -8,8 +8,6 @@ pipeline{
             DOCKER_CREDENTIALS_ID= 'dockerhub'
             DOCKER_IMAGE_NAME= 'samadhangapat/inquiryms:latest'
         
-           
-            DATE = new Date().format("yyyy-MM-dd'T'HH:mm:ss'Z'", TimeZone.getTimeZone('UTC'))
         }
   
         stages {
