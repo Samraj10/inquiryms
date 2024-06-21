@@ -7,15 +7,16 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'dockerhub' // Define Docker credentials ID
         DOCKER_IMAGE_NAME = 'samadhangapat/inquiryms:latest' // Define Docker image name
     }
-  /*
+  
     stages {
+
         stage ('checkout') {
             steps {
                 deleteDir() // Clean workspace before checking out
                 git url: 'https://github.com/Samraj10/inquiryms.git', branch: 'master' // Checkout Git repository
             }
         }
-
+/*
         stage ('build') {
             steps {
                 bat 'mvn clean package' // Build the project using Maven
