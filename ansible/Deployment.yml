@@ -24,14 +24,27 @@ spec:
           imagePullPolicy: Always
           env:
             - name: SECOND_MICROSERVICE_URL
-              value: http://productdetails-app:8082/api/susers
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: SECOND_MICROSERVICE_URL
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://mysql:3306/mfdb
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: SPRING_DATASOURCE_URL
             - name: SPRING_DATASOURCE_USERNAME
-              value: root 
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: SPRING_DATASOURCE_USERNAME
             - name: SPRING_DATASOURCE_PASSWORD
-              value: root
-      
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: SPRING_DATASOURCE_PASSWORD
+          
+
       restartPolicy: Always
 
 ...
