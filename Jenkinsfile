@@ -16,7 +16,7 @@ pipeline {
                 git url: 'https://github.com/Samraj10/inquiryms.git', branch: 'master' // Checkout Git repository
             }
         }
-/*
+
         stage ('build') {
             steps {
                 bat 'mvn clean package' // Build the project using Maven
@@ -26,8 +26,12 @@ pipeline {
         stage ('test') {
             steps {
                 bat 'mvn test' // Run tests using Maven
+                
             }
         }
+
+        //Sonar stage
+
 
         stage ('check docker version') {
             steps {
@@ -57,7 +61,7 @@ pipeline {
                 }
             }
         }
- */
+ 
 
         stage ('SSH into Ansible Server and Run Playbook') {
             steps {
