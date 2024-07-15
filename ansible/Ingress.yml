@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  
+spec:
+  rules:
+    - host: samadhan.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: inquiry-app
+                port:
+                  number: 8081
+  
+
+      
+

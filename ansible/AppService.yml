@@ -6,11 +6,12 @@ metadata:
 spec:
   selector:
     app: inquiry-app
-  type: LoadBalancer
+  type: NodePort
   ports:
     - protocol: TCP
       port: 8081
       targetPort: 8081
+      nodePort: 30080  # Choose an available port
     
 
 ...
