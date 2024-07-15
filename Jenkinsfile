@@ -16,7 +16,7 @@ pipeline {
                 git url: 'https://github.com/Samraj10/inquiryms.git', branch: 'master' // Checkout Git repository
             }
         }
-
+/*
 
         stage ('build') {
             steps {
@@ -63,7 +63,7 @@ pipeline {
             }
         }
  
-
+*/
         stage ('SSH into Ansible Server and Run Playbook') {
             steps {
                 sshPublisher( 
