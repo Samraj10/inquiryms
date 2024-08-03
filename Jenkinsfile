@@ -64,7 +64,7 @@ pipeline {
         }
  
 */
-        stage ('SSH into Ansible Server and Run Playbook') {
+        stage ('Deploy') {
             steps {
                 sshPublisher( 
                     publishers: [

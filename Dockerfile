@@ -12,3 +12,5 @@ EXPOSE 8081
 
 # Define the command to run the application
 CMD ["java", "-jar", "inquiryms.jar"]
+
+
